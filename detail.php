@@ -1,60 +1,42 @@
 <?php 
-// $id = $_GET['id'];
-// include_once "ambildata_id.php";
-// $obj = json_decode($data);
-// $titles="";
-// $id="";
-// $kat="";
-// $web="";
-// $hp="";
-// $alamat="";
-// $kota="";
-// $prov="";
-// $lat="";
-// $long="";
-// foreach($obj->results as $item){
-//   $titles.=$item->nama_kampus;
-//   $id.=$item->id_kampus;
-//   $kat.=$item->akreditas;
-//   $web.=$item->website;
-//   $hp.=$item->no_hp;
-//   $alamat.=$item->alamat;
-//   $kota.=$item->kota;
-//   $prov.=$item->provinsi;
-//   $lat.=$item->latitude;
-//   $long.=$item->longitude;
-// }
-
-// $title = "Detail dan Lokasi : ".$titles;
-// include_once "header.php"; 
-
 $id = $_GET['id'];
 include_once "ambildata_id.php";
 $obj = json_decode($data);
-
-$titles = $obj->nama_kampus;
-$id = $obj->id_kampus;
-$kat = $obj->akreditas;
-$web = $obj->website;
-$hp = $obj->no_hp;
-$alamat = $obj->alamat;
-$kota = $obj->kota;
-$prov = $obj->provinsi;
-$lat = $obj->latitude;
-$long = $obj->longitude;
+$titles="";
+$id="";
+$kat="";
+$web="";
+$hp="";
+$alamat="";
+$kota="";
+$prov="";
+$lat="";
+$long="";
+foreach($obj->results as $item){
+  $titles.=$item->nama_kampus;
+  $id.=$item->id_kampus;
+  $kat.=$item->akreditas;
+  $web.=$item->website;
+  $hp.=$item->no_hp;
+  $alamat.=$item->alamat;
+  $kota.=$item->kota;
+  $prov.=$item->provinsi;
+  $lat.=$item->latitude;
+  $long.=$item->longitude;
+}
 
 $title = "Detail dan Lokasi : ".$titles;
 include_once "header.php"; 
 ?>
 
-<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAbXF62gVyhJOVkRiTHcVp_BkjPYDQfH5w"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBD-vNKPmhPpeLt6ThHmGIA5xsYM4fcMyk&libraries=places&v=beta"></script>
 
 <script>
 
 function initialize() {
   var myLatlng = new google.maps.LatLng(<?php echo $lat ?>,<?php echo $long ?>);
   var mapOptions = {
-    zoom: 10,
+    zoom: 15,
     center: myLatlng
   };
 
